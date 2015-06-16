@@ -18,6 +18,7 @@ import Data.Functor.Alt
 import Data.Functor.Identity(Identity(Identity))
 import Data.NotZero(NotZero)
 import Data.NotZeroOr(NotZeroOr(IsNotZero, OrNotZero), NotZeroOrT, isoNumber, isoNotZeroOrT)
+import Data.Semigroup(Semigroup((<>)))
 import Prelude(Num)
 
 data AccNotZeroOr f a x =
@@ -89,6 +90,12 @@ isoOneNotZeroOrT ::
   Iso (OneNotZeroOr a x) (OneNotZeroOr b y) (NotZeroOrT a Identity x) (NotZeroOrT b Identity y)
 isoOneNotZeroOrT =
   isoOneNotZeroOr . isoNotZeroOrT
+
+instance Semigroup (AccNotZeroOr f a x) where
+  OrAccNotZero x <> _ =
+    OrAccNotZero x
+  IsAccNotZero _ <> y =
+    y
 
 instance Functor f => Functor (AccNotZeroOr f a) where
   fmap _ (IsAccNotZero z) =

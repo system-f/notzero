@@ -25,6 +25,7 @@ import Data.Functor.Identity(Identity(Identity))
 import Data.Maybe(Maybe(Nothing, Just))
 import Data.NotZero(NotZero, notZero, getNotZero)
 import Data.Ord(Ord)
+import Data.Semigroup(Semigroup((<>)))
 import Prelude(Show, Num)
 
 data NotZeroOr a x =
@@ -91,6 +92,12 @@ isoNumber =
              Nothing -> OrNotZero ()
              Just z -> IsNotZero z)
 
+instance Semigroup (NotZeroOr a x) where
+  OrNotZero x <> _ =
+    OrNotZero x
+  IsNotZero _ <> y =
+    y
+    
 instance Functor (NotZeroOr a) where
   fmap _ (IsNotZero z) =
     IsNotZero z
