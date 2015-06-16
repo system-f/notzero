@@ -1,3 +1,7 @@
+0.0.3
+
+* Monoid instances on `NotZeroOr` and `AccNotZeroOr`.
+
 0.0.2
 
 * Semigroup instances on `NotZeroOr` and `AccNotZeroOr`.

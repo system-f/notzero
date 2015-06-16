@@ -16,6 +16,7 @@ import Data.Either(Either(Left, Right))
 import Data.Eq(Eq)
 import Data.Functor.Alt
 import Data.Functor.Identity(Identity(Identity))
+import Data.Monoid(Monoid(mappend, mempty))
 import Data.NotZero(NotZero)
 import Data.NotZeroOr(NotZeroOr(IsNotZero, OrNotZero), NotZeroOrT, isoNumber, isoNotZeroOrT)
 import Data.Semigroup(Semigroup((<>)))
@@ -96,6 +97,12 @@ instance Semigroup (AccNotZeroOr f a x) where
     OrAccNotZero x
   IsAccNotZero _ <> y =
     y
+    
+instance Monoid x => Monoid (AccNotZeroOr f a x) where
+  mappend =
+    (<>)
+  mempty =
+    OrAccNotZero mempty
 
 instance Functor f => Functor (AccNotZeroOr f a) where
   fmap _ (IsAccNotZero z) =

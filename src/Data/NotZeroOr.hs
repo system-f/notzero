@@ -23,6 +23,7 @@ import Data.Functor.Bind(Bind((>>-)))
 import Data.Functor.Bind.Trans(BindTrans(liftB))
 import Data.Functor.Identity(Identity(Identity))
 import Data.Maybe(Maybe(Nothing, Just))
+import Data.Monoid(Monoid(mappend, mempty))
 import Data.NotZero(NotZero, notZero, getNotZero)
 import Data.Ord(Ord)
 import Data.Semigroup(Semigroup((<>)))
@@ -98,6 +99,12 @@ instance Semigroup (NotZeroOr a x) where
   IsNotZero _ <> y =
     y
     
+instance Monoid x => Monoid (NotZeroOr a x) where
+  mappend =
+    (<>)
+  mempty =
+    OrNotZero mempty
+
 instance Functor (NotZeroOr a) where
   fmap _ (IsNotZero z) =
     IsNotZero z
