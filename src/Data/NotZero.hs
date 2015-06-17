@@ -43,10 +43,9 @@ notZeroElse d a =
   
 notZero1 ::
   (Eq a, Num a) =>
-  a
-  -> NotZero a
+  NotZero a
 notZero1 =
-  notZeroElse 1
+  NotZero 1
 
 instance Num a => Semigroup (NotZero a) where
   NotZero a <> NotZero b = 
