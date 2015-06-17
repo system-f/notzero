@@ -1,3 +1,7 @@
+0.0.7
+
+* Fix invariant break in `notZeroElse`.
+
 0.0.6
 
 * Fix bug in `notZeroElse`.
