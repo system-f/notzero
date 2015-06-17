@@ -39,7 +39,7 @@ notZeroElse ::
   -> a
   -> NotZero a
 notZeroElse d a =
-  NotZero (bool 1 d (a == 0))
+  NotZero (bool a d (a == 0))
   
 notZero1 ::
   (Eq a, Num a) =>

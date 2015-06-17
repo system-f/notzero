@@ -1,3 +1,7 @@
+0.0.6
+
+* Fix bug in `notZeroElse`.
+
 0.0.5
 
 * Changed `notZero1` to just be the value 1.
