@@ -2,6 +2,8 @@ module Data.NotZero(
   NotZero
 , getNotZero
 , notZero
+, notZeroElse
+, notZero1
 ) where
 
 import Control.Lens(Prism', prism')
@@ -30,6 +32,21 @@ notZero =
   prism'
     getNotZero
     (\a -> bool (Just (NotZero a)) Nothing (a == 0))
+
+notZeroElse ::
+  (Eq a, Num a) =>
+  a
+  -> a
+  -> NotZero a
+notZeroElse d a =
+  NotZero (bool 1 d (a == 0))
+  
+notZero1 ::
+  (Eq a, Num a) =>
+  a
+  -> NotZero a
+notZero1 =
+  notZeroElse 1
 
 instance Num a => Semigroup (NotZero a) where
   NotZero a <> NotZero b = 
