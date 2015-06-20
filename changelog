@@ -1,3 +1,7 @@
+0.0.8
+
+* Change use of `fmap` to `liftM` for older GHC versions.
+
 0.0.7
 
 * Fix invariant break in `notZeroElse`.
