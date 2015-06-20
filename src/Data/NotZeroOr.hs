@@ -13,7 +13,7 @@ module Data.NotZeroOr(
 import Control.Applicative(Applicative(pure, (<*>)), liftA2)
 import Control.Category(Category((.)))
 import Control.Lens(Prism, prism, Iso, iso, (^?))
-import Control.Monad(Monad(return, (>>=)))
+import Control.Monad(Monad(return, (>>=)), liftM)
 import Control.Monad.Trans.Class(MonadTrans(lift))
 import Data.Either(Either(Left, Right))
 import Data.Eq(Eq)
@@ -190,4 +190,4 @@ instance BindTrans (NotZeroOrT a) where
 
 instance MonadTrans (NotZeroOrT a) where
   lift =
-    NotZeroOrT . fmap OrNotZero
+    NotZeroOrT . liftM OrNotZero
