@@ -4,6 +4,7 @@ module Data.NotZero(
 , notZero
 , notZeroElse
 , notZero1
+, notZeroElse1
 ) where
 
 import Control.Lens(Prism', prism')
@@ -46,6 +47,13 @@ notZero1 ::
   NotZero a
 notZero1 =
   NotZero 1
+
+notZeroElse1 ::
+  (Eq a, Num a) =>
+  a
+  -> NotZero a
+notZeroElse1 =
+  notZeroElse notZero1
 
 instance Num a => Semigroup (NotZero a) where
   NotZero a <> NotZero b = 

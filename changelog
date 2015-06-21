@@ -1,3 +1,8 @@
+0.0.9
+
+* Require GHC >= 7.8
+* Add `notZeroElse1`
+
 0.0.8
 
 * Change use of `fmap` to `liftM` for older GHC versions.
