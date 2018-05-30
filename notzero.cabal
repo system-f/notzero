@@ -14,7 +14,7 @@ description:
 homepage:           https://github.com/NICTA/notzero
 bug-reports:        https://github.com/NICTA/notzero/issues
 cabal-version:      >= 1.10
-build-type:         Custom
+build-type:         Simple
 extra-source-files: changelog
 
 source-repository   head
@@ -48,27 +48,3 @@ library
                     Data.NotZero
                     Data.NotZeroOr
 
-test-suite doctests
-  type:
-                    exitcode-stdio-1.0
-
-  main-is:
-                    doctests.hs
-
-  default-language:
-                    Haskell2010
-
-  build-depends:
-                      base < 5 && >= 4.7
-                    , doctest >= 0.9.7
-                    , filepath >= 1.3
-                    , directory >= 1.1
-                    , QuickCheck >= 2.0
-                    , template-haskell >= 2.8
-
-  ghc-options:
-                    -Wall
-                    -threaded
-
-  hs-source-dirs:
-                    test
