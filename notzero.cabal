@@ -9,7 +9,7 @@ copyright:          Copyright (C) 2015 NICTA Limited
 synopsis:           A data type for representing numeric values, except zero.
 category:           Data, Numeric
 description:        
-  <<http://i.imgur.com/uZnp9ke.png>>
+  <<https://raw.githubusercontent.com/qfpl/assets/master/data61-transparent-bg.png>>
   .
   A data type for representing numeric values, except zero. This might be useful in working with process exit codes.
 homepage:           https://github.com/qfpl/notzero
